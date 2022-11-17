@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Survey Form</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <h1 id="title">Survey Form</h1>
+    <p id="description">Please fill out this short survey about yourself!</p>
+    <form id="survey-form">
+      <fieldset id="details">
+        <label id="name-label" for="name"
+          >Enter your name:
+          <input
+            type="text"
+            id="name"
+            name="name"
+            required
+            placeholder="John Doe"
+        /></label>
+        <label id="email-label" for="email"
+          >Enter your email address:
+          <input
+            type="email"
+            id="email"
+            name="email"
+            required
+            placeholder="johndoe@gmail.com"
+        /></label>
+        <label id="number-label" for="age"
+          >Enter your age:
+          <input
+            type="number"
+            id="number"
+            name="age"
+            min="13"
+            max="120"
+            placeholder="21"
+        /></label>
+      </fieldset>
+      <p>Important questions in life!</p>
+      <fieldset id="questions">
+        <label id="dropdown-label"
+          >What is your preferred animal?
+          <select id="dropdown" name="animal">
+            <option value="">Select an option</option>
+            <option value="cat">Cat</option>
+            <option value="dog">Dog</option>
+          </select>
+        </label>
+        <p id="icecream">What flavor icecream do you prefer?</p>
+        <div id="radio-buttons">
+          <label class="radio-label"
+            ><input
+              type="radio"
+              name="icecream"
+              value="vanilla"
+              class="inline"
+            />
+            Vanilla</label
+          >
+          <label class="radio-label"
+            ><input
+              type="radio"
+              name="icecream"
+              value="chocolate"
+              class="inline"
+            />
+            Chocolate</label
+          >
+        </div>
+        <p id="choices">What are your favorite colors?</p>
+        <div id="colors-container">
+          <div id="colors">
+            <label
+              ><input type="checkbox" name="red" value="red" class="inline" />
+              Red</label
+            >
+            <label
+              ><input
+                type="checkbox"
+                name="yellow"
+                value="yellow"
+                class="inline"
+              />
+              Yellow</label
+            >
+            <label
+              ><input type="checkbox" name="blue" value="blue" class="inline" />
+              Blue</label
+            >
+          </div>
+          <div id="colors">
+            <label
+              ><input
+                type="checkbox"
+                name="orange"
+                value="orange"
+                class="inline"
+              />
+              Orange</label
+            >
+            <label
+              ><input
+                type="checkbox"
+                name="green"
+                value="green"
+                class="inline"
+              />
+              Green</label
+            >
+            <label
+              ><input
+                type="checkbox"
+                name="purple"
+                value="purple"
+                class="inline"
+              />
+              Purple</label
+            >
+          </div>
+        </div>
+      </fieldset>
+      <fieldset id="comments">
+        <label
+          >Anything you would like to tell us about yourself?<textarea
+            name="comments"
+            rows="5"
+          ></textarea>
+        </label>
+      </fieldset>
+      <input type="submit" value="Submit" />
+    </form>
+  </body>
+</html>
