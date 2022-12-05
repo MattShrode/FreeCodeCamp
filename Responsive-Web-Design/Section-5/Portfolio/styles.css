@@ -1,0 +1,134 @@
+:root {
+  --base: #2c3531ff; /* Outer Space Crayola */
+  --dark: #116466ff; /* Skobeloff */
+  --light: #d1e8e2ff; /* Light Cyan */
+  --accent1: #d9b08cff; /* Tumbleweed */
+  --accent2: #ffcb9aff; /* Peach Crayola */
+
+  --space1: 0.5rem;
+  --space2: 1rem;
+  --space3: 1.5rem;
+  --space4: 2rem;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  /* border: 1px dashed black; */
+}
+
+html {
+  
+  font-family: "Raleway", sans-serif;
+}
+
+body {
+  color: var(--light);
+}
+
+/* Nav Bar */
+
+.nav-bar {
+  width: 100%;
+  background-color: var(--dark);
+  display: flex;
+  justify-content: end;
+  position: sticky;
+  top: 0;
+  left: 0;
+}
+
+.nav-ul {
+  display: flex;
+  align-items: center;
+  list-style: none;
+}
+
+.nav-link {
+  display: block;
+  padding: var(--space3) var(--space4);
+  color: var(--light);
+  text-decoration: none;
+}
+
+.nav-link:hover,
+.nav-link:active {
+  background-color: var(--accent2);
+  color: var(--dark);
+}
+
+/* Welcome Section */
+
+#welcome-section {
+    background-color: var(--base);
+    display: flex;
+    height: 100vh;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.welcome-h1 {
+    font-size: 6rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+.welcome-h2 {
+    font-size: 4rem;
+    text-align: center;
+}
+
+.welcome-paragraph {
+    font-size: 3rem;
+    font-style: italic;
+    text-align: center;
+}
+
+/* Projects */
+
+#projects {
+  background-color: var(--light);
+  text-align: center;
+  padding: var(--space4);
+}
+
+.projects-h2 {
+  color: var(--dark);
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  column-gap: var(--space4);
+  row-gap: var(--space4);
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.tile-container {
+  text-decoration: none;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.tile-image {
+  width: 100%;
+  height: calc(100% - 6rem);
+  object-fit: cover;
+  display: block;
+}
+
+.tile-paragraph {
+  padding: 2rem 0.5rem;
+  font-size: 2rem;
+  background-color: var(--accent2);
+  color: var(--dark);
+}
+
+/* Contact */
+
+#contact {
+  background-color: var(--base);
+}
