@@ -19,22 +19,28 @@
 }
 
 html {
-  
   font-family: "Raleway", sans-serif;
+  scroll-padding-top: 67px;
 }
 
 body {
   color: var(--light);
 }
 
+a {
+  text-decoration: none;
+  color: var(--light);
+}
+
 /* Nav Bar */
 
-.nav-bar {
+.navbar {
   width: 100%;
+  
   background-color: var(--dark);
   display: flex;
   justify-content: end;
-  position: sticky;
+  position: fixed;
   top: 0;
   left: 0;
 }
@@ -43,12 +49,12 @@ body {
   display: flex;
   align-items: center;
   list-style: none;
+  padding-right: 2rem;
 }
 
 .nav-link {
   display: block;
   padding: var(--space3) var(--space4);
-  color: var(--light);
   text-decoration: none;
 }
 
@@ -61,29 +67,29 @@ body {
 /* Welcome Section */
 
 #welcome-section {
-    background-color: var(--base);
-    display: flex;
-    height: 100vh;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  background-color: var(--base);
+  display: flex;
+  height: 100vh;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .welcome-h1 {
-    font-size: 6rem;
-    font-weight: bold;
-    text-align: center;
+  font-size: 6rem;
+  font-weight: bold;
+  text-align: center;
 }
 
 .welcome-h2 {
-    font-size: 4rem;
-    text-align: center;
+  font-size: 4rem;
+  text-align: center;
 }
 
 .welcome-paragraph {
-    font-size: 3rem;
-    font-style: italic;
-    text-align: center;
+  font-size: 3rem;
+  font-style: italic;
+  text-align: center;
 }
 
 /* Projects */
@@ -96,6 +102,8 @@ body {
 
 .projects-h2 {
   color: var(--dark);
+  font-size: 2rem;
+  margin-bottom: var(--space4);
 }
 
 .projects-grid {
@@ -115,14 +123,14 @@ body {
 
 .tile-image {
   width: 100%;
-  height: calc(100% - 6rem);
+  height: calc(100% - 5.5rem);
   object-fit: cover;
   display: block;
 }
 
 .tile-paragraph {
   padding: 2rem 0.5rem;
-  font-size: 2rem;
+  font-size: 1.5rem;
   background-color: var(--accent2);
   color: var(--dark);
 }
@@ -131,4 +139,51 @@ body {
 
 #contact {
   background-color: var(--base);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.contact-h2 {
+  font-size: 4rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+.contact-links {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 4rem;
+  flex-wrap: wrap;
+}
+
+.btn {
+  display: inline-block;
+  padding: 1rem 2rem;
+  border-radius: 2px;
+}
+
+.contact-detail {
+  font-size: 2.4rem;
+  text-shadow: 2px 2px 1px #1f1f1f;
+  transition: transform 0.3s ease-out;
+}
+
+.contact-detail:hover {
+  transform: translateY(8px);
+}
+
+/* Media */
+
+@media (max-width: 600px) {
+  .navbar {
+    justify-content: center;
+  }
+
+  .nav-ul {
+    padding-right: 0;
+  }
 }
