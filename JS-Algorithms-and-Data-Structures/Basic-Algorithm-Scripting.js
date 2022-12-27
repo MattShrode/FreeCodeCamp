@@ -49,3 +49,63 @@ function largestOfFour(arr) {
     }
     return newArr;
   }
+
+//Confirm the Ending
+function confirmEnding(str, target) {
+    let newStr = str.substr(str.length-target.length);
+    if (newStr === target) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+//Repeat a String Repeat a String
+function repeatStringNumTimes(str, num) {
+    if (num <= 0) {
+      return "";
+    } else {
+      let newStr = "";
+      for (let i=0; i<num; i++) {
+        newStr += str;
+      }
+      return newStr;
+    }
+  }
+
+//Truncate a String
+function truncateString(str, num) {
+    if (str.length > num) {
+      let newStr = str.substr(0, num);
+      newStr += "...";
+      return newStr
+    } else {
+      return str;
+    }
+  }
+
+//Finders Keepers
+function findElement(arr, func) {
+    let num = 0;
+    for (let i=0; i<arr.length; i++) {
+      if (func(arr[i])) {
+        return num = arr[i];
+      }
+    }
+    return undefined;
+  }
+
+//Boo Who
+function booWho(bool) {
+    return bool === true || bool === false ? true : false;
+  }
+
+//Title Case a Sentence
+function titleCase(str) {
+    let arr = str.split(" ");
+    for (let i=0; i<arr.length; i++) {
+      arr[i] = arr[i][0].toUpperCase() + arr[i].substr(1).toLowerCase();
+    }
+    let newStr = arr.join(" ");
+    return newStr;
+  }
