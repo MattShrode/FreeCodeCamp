@@ -109,3 +109,54 @@ function titleCase(str) {
     let newStr = arr.join(" ");
     return newStr;
   }
+
+//Slice and Splice
+function frankenSplice(arr1, arr2, n) {
+    let newArr = arr2.slice(0);
+    newArr.splice(n, 0, ...arr1);
+    return newArr;
+  }
+
+//Falsy Bouncer
+function bouncer(arr) {
+    let newArr = [];
+    for (let i=0; i<arr.length; i++) {
+      if (arr[i]) {
+        newArr.push(arr[i]);
+      }
+    }
+    return newArr;
+  }
+
+//Where Do I Belong?
+function getIndexToIns(arr, num) {
+    arr.sort(function(a, b){return a - b});
+    let index = 0;
+    for (let i=0; i<arr.length; i++) {
+      if(num > arr[i]) {
+        index++;
+      }
+    }
+    return index;
+  }
+
+//Mutations
+function mutation(arr) {
+    let first = arr[0].toLowerCase();
+    let second = arr[1].toLowerCase();
+    for (let i=0; i<second.length; i++) {
+      if(first.indexOf(second[i]) < 0) {
+        return false;
+      }
+    }
+    return true;
+  }
+
+//Chunky Monkey
+function chunkArrayInGroups(arr, size) {
+    let newArr = [];
+    for (let i=0; i<arr.length; i+=size) {
+      newArr.push(arr.slice(i, i+size));
+    }
+    return newArr;
+  }
