@@ -683,3 +683,116 @@ a specific type of tea).
   const squaredIntegers = squareList([-3, 4.8, 5, 3, -3.2]);
   console.log(squaredIntegers);
 }
+
+//Sort an Array Alphabetically using the sort Method
+{
+  function alphabeticalOrder(arr) {
+    // Only change code below this line
+    return arr.sort(function (a, b) {
+      return a === b ? 0 : a < b ? -1 : 1;
+    });
+    return arr;
+    // Only change code above this line
+  }
+
+  console.log(alphabeticalOrder(["a", "d", "c", "a", "z", "g"]));
+}
+
+//Return a Sorted Array Without Changing the Original Array
+{
+  const globalArray = [5, 6, 3, 2, 9];
+
+  function nonMutatingSort(arr) {
+    // Only change code below this line
+    let newArr = arr.slice();
+    return newArr.sort(function (a, b) {
+      return a - b;
+    });
+
+    // Only change code above this line
+  }
+
+  console.log(nonMutatingSort(globalArray));
+}
+
+//Split a String into an Array Using the split Method
+{
+  function splitify(str) {
+    // Only change code below this line
+    let newStr = str.split(/\W/g);
+    return newStr;
+    // Only change code above this line
+  }
+
+  console.log(splitify("Hello World,I-am code"));
+}
+
+//Combine an Array into a String Using the join Method
+{
+  function sentensify(str) {
+    // Only change code below this line
+    let strArr = str.split(/\W/g);
+    let newStr = strArr.join(" ");
+    return newStr;
+    // Only change code above this line
+  }
+
+  sentensify("May-the-force-be-with-you");
+}
+
+//Apply Functional Programming to Convert Strings to URL Slugs
+{
+  // Only change code below this line
+  function urlSlug(title) {
+    let arr = title.toLowerCase().split(/\W/g);
+    for (let i = 0; i < arr.length; i++) {
+      if (!arr[i]) {
+        arr.splice(i, 1);
+      }
+    }
+    let slug = arr.join("-");
+    return slug;
+  }
+  // Only change code above this line
+  urlSlug(" Winter Is  Coming");
+}
+
+//Use the every Method to Check that Every Element in an Array Meets a Criteria
+{
+  function checkPositive(arr) {
+    // Only change code below this line
+    return arr.every((element) => element > 0);
+
+    // Only change code above this line
+  }
+
+  checkPositive([1, 2, 3, -4, 5]);
+}
+
+//Use the some Method to Check that Any Elements in an Array Meet a Criteria
+{
+  function checkPositive(arr) {
+    // Only change code below this line
+    return arr.some((element) => element > 0);
+
+    // Only change code above this line
+  }
+
+  checkPositive([1, 2, 3, -4, 5]);
+}
+
+//Introduction to Currying and Partial Application
+{
+  function add(x) {
+    // Only change code below this line
+    return function (y) {
+      return function (z) {
+        return x + y + z;
+      };
+    };
+
+    // Only change code above this line
+  }
+
+  add(10)(20)(30);
+}
