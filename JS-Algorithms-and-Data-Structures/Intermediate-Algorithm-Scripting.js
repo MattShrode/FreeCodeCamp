@@ -133,3 +133,51 @@
 
   myReplace("A quick brown fox jumped over the lazy dog", "jumped", "leaped");
 }
+
+//DNA Pairing
+{
+  function pairElement(str) {
+    let array = str.split("");
+    let matchedArray = [];
+    array.forEach(function (element) {
+      let pair = "";
+      switch (element) {
+        case "A":
+          pair = "T";
+          break;
+        case "T":
+          pair = "A";
+          break;
+        case "C":
+          pair = "G";
+          break;
+        case "G":
+          pair = "C";
+          break;
+      }
+      matchedArray.push([element, pair]);
+    });
+    return matchedArray;
+  }
+
+  pairElement("GCG");
+}
+
+//Missing Letters
+{
+  function fearNotLetter(str) {
+    let start = str.charCodeAt(0);
+    let missing = false;
+    for (let i = 0; i < str.length; i++) {
+      if (str.charCodeAt(i) !== start + i) {
+        missing = true;
+        return String.fromCharCode(start + i);
+      }
+    }
+    if (missing === false) {
+      return undefined;
+    }
+  }
+
+  fearNotLetter("abcdefghjklmno");
+}
