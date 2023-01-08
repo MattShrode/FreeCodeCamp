@@ -93,3 +93,43 @@
 
   spinalCase("AllThe-small Things");
 }
+
+//Pig Latin
+{
+  function translatePigLatin(str) {
+    let newStr = "";
+    if (str.match(/^[aeiou]/)) {
+      newStr = str.concat("way");
+      console.log(newStr);
+    } else {
+      let vowelIndex = str.search(/[aeiou]/i);
+      if (vowelIndex === -1) {
+        newStr = `${str}ay`;
+        return newStr;
+      }
+      let consonants = str.slice(0, vowelIndex);
+      let theRest = str.slice(vowelIndex);
+      newStr = `${theRest}${consonants}ay`;
+      console.log(newStr);
+    }
+    return newStr;
+  }
+
+  translatePigLatin("consonant");
+}
+
+//Search and Replace
+{
+  function myReplace(str, before, after) {
+    if (before[0] === before[0].toLowerCase()) {
+      after = after.toLowerCase();
+    } else {
+      after = after[0].toUpperCase() + after.slice(1);
+    }
+    str = str.replace(before, after);
+    console.log(str);
+    return str;
+  }
+
+  myReplace("A quick brown fox jumped over the lazy dog", "jumped", "leaped");
+}
