@@ -181,3 +181,53 @@
 
   fearNotLetter("abcdefghjklmno");
 }
+
+//Sorted Union
+{
+  function uniteUnique(arr) {
+    let newArr = [];
+    let args = Array.from(arguments);
+    args.forEach(function (element) {
+      element.forEach(function (subElement) {
+        if (!newArr.includes(subElement)) {
+          newArr.push(subElement);
+        }
+      });
+    });
+    return newArr;
+  }
+
+  uniteUnique([1, 3, 2], [5, 2, 1, 4], [2, 1]);
+}
+
+//Convert HTML Entities
+{
+  function convertHTML(str) {
+    let array = str.split("");
+    for (let i = 0; i < array.length; i++) {
+      switch (array[i]) {
+        case "&":
+          array.splice(i, 1, "&amp;");
+          break;
+        case "<":
+          array.splice(i, 1, "&lt;");
+          break;
+        case ">":
+          array.splice(i, 1, "&gt;");
+          break;
+        case '"':
+          array.splice(i, 1, "&quot;");
+          break;
+        case "'":
+          array.splice(i, 1, "&apos;");
+          break;
+        default:
+          break;
+      }
+    }
+    let newStr = array.join("");
+    return newStr;
+  }
+
+  convertHTML("Dolce < Gabbana");
+}
