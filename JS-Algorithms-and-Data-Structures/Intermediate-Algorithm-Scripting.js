@@ -231,3 +231,94 @@
 
   convertHTML("Dolce < Gabbana");
 }
+
+//Sum All Odd Fibonacci Numbers
+{
+  function sumFibs(num) {
+    let start = 0;
+    let next = 1;
+    let current;
+    let sum = 0;
+    for (let i = 0; i <= num; i++) {
+      current = start + next;
+      start = next;
+      next = current;
+      if ((current % 2 !== 0) & (current <= num)) {
+        sum += current;
+      }
+      console.log(
+        `Current: ${current}, Start: ${start}, Next: ${next}, Sum: ${sum}`
+      );
+    }
+    if (num === 1) {
+      return sum;
+    } else {
+      return sum + 1;
+    }
+  }
+  console.log(sumFibs(1));
+}
+
+//Sum All Primes
+{
+  function isPrime(num) {
+    if (num < 2) return false;
+    for (var i = 2; i < num; i++) {
+      if (num % i == 0) return false;
+    }
+    return true;
+  }
+
+  function sumPrimes(num) {
+    let sum = 0;
+    for (let i = 0; i <= num; i++) {
+      if (isPrime(i)) {
+        sum += i;
+      }
+    }
+    return sum;
+  }
+
+  sumPrimes(977);
+}
+
+//Smallest Common Multiple
+{
+  function smallestCommons(arr) {
+    let min = Math.min(...arr);
+    let max = Math.max(...arr);
+    let range = [];
+    for (min; min <= max; min++) {
+      range.push(min);
+    }
+    let current = max * (max - 1);
+    while (true) {
+      let foundLCM = range.every((n) => current % n === 0);
+      if (foundLCM) {
+        return current;
+      } else {
+        current++;
+      }
+    }
+  }
+
+  smallestCommons([1, 5]);
+}
+
+//Drop It
+{
+  function dropElements(arr, func) {
+    let index = arr.findIndex(func);
+    let newArr = [];
+    if (index === -1) {
+      return newArr;
+    } else {
+      newArr = arr.slice(index);
+      return newArr;
+    }
+  }
+
+  dropElements([1, 2, 3, 4], function (n) {
+    return n > 5;
+  });
+}
