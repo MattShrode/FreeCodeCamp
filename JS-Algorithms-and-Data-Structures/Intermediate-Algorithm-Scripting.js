@@ -322,3 +322,72 @@
     return n > 5;
   });
 }
+
+//Steamroller
+{
+  function steamrollArray(arr, newArr = []) {
+    for (const value of arr) {
+      if (Array.isArray(value)) {
+        steamrollArray(value, newArr);
+      } else {
+        newArr.push(value);
+      }
+    }
+    return newArr;
+  }
+
+  console.log(steamrollArray([1, [2], [3, [[4]]]]));
+}
+
+//Binary Agents
+{
+  function binaryAgent(str) {
+    let translation = str
+      .split(" ")
+      .map((value) => parseInt(value, 2))
+      .map((value) => String.fromCharCode(value))
+      .join("");
+    return translation;
+  }
+
+  binaryAgent(
+    "01000001 01110010 01100101 01101110 00100111 01110100 00100000 01100010 01101111 01101110 01100110 01101001 01110010 01100101 01110011 00100000 01100110 01110101 01101110 00100001 00111111"
+  );
+}
+
+//Everything Be True
+{
+  function truthCheck(collection, pre) {
+    return collection.every((element) => {
+      return element.hasOwnProperty(pre) && !!element[pre];
+    });
+  }
+
+  truthCheck(
+    [
+      { name: "freeCodeCamp", users: [{ name: "Quincy" }, { name: "Naomi" }] },
+      { name: "Code Radio", users: [{ name: "Camperbot" }] },
+      { name: "", users: [] },
+    ],
+    "users"
+  );
+}
+
+//Arguments Optional
+{
+  function addTogether() {
+    const [num1, num2] = arguments;
+    if (typeof num1 !== "number") {
+      return undefined;
+    }
+    if (arguments.length === 1) {
+      return (num2) => addTogether(num1, num2);
+    }
+    if (typeof num2 !== "number") {
+      return undefined;
+    }
+    return num1 + num2;
+  }
+
+  console.log(addTogether(2, 3));
+}
