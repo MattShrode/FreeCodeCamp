@@ -391,3 +391,55 @@
 
   console.log(addTogether(2, 3));
 }
+
+//Make A Person
+{
+  const Person = function (firstAndLast) {
+    // Only change code below this line
+    // Complete the method below and implement the others similarly
+    let fullName = firstAndLast;
+    this.getFullName = function () {
+      return fullName;
+    };
+    this.getFirstName = function () {
+      return fullName.split(" ")[0];
+    };
+    this.getLastName = function () {
+      return fullName.split(" ")[1];
+    };
+    this.setFirstName = function (input) {
+      fullName = input + " " + fullName.split(" ")[1];
+    };
+    this.setLastName = function (input) {
+      fullName = fullName.split(" ")[0] + " " + input;
+    };
+    this.setFullName = function (input) {
+      fullName = input;
+    };
+    return firstAndLast;
+  };
+
+  const bob = new Person("Bob Ross");
+  bob.getFullName();
+}
+
+//Map The Debris
+{
+  function orbitalPeriod(arr) {
+    let newArr = [];
+    const GM = 398600.4418;
+    const earthRadius = 6367.4447;
+    for (let i = 0; i < arr.length; i++) {
+      let orbitalPeriod =
+        2 * Math.PI * Math.sqrt((earthRadius + arr[i].avgAlt) ** 3 / GM);
+      newArr.push({
+        name: arr[i].name,
+        orbitalPeriod: +orbitalPeriod.toFixed(0),
+      });
+    }
+    console.log(newArr);
+    return newArr;
+  }
+
+  orbitalPeriod([{ name: "sputnik", avgAlt: 35873.5553 }]);
+}
