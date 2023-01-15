@@ -1,48 +1,68 @@
 function checkCashRegister(price, cash, cid) {
+  //Convert to integers to avoid floating point number problems.
+  const intPrice = price * 100;
+  const intCash = cash * 100;
+  cid.forEach((element) => {
+    for (let i = 1; i < element.length; i++) {
+      element[i] = Math.round(element[i] * 100);
+    }
+  });
+
   let totalcid = 0;
-  let changeDue = cash - price;
+  let changeDue = intCash - intPrice;
+  const result = { status: "", change: [] };
+  const denomination = [1, 5, 10, 25, 100, 500, 1000, 2000, 10000];
+
+  //Calculate the total cash in the drawer
   cid.forEach((element) => {
     totalcid += element[1];
   });
-  let object = {
-    status: "",
-    change: [],
-  };
+
+  //Insufficient drawer cash to cover the change
   if (totalcid < changeDue) {
-    object.status = "INSUFFICIENT_FUNDS";
-    return object;
+    result.status = "INSUFFICIENT_FUNDS";
+    return result;
   }
+
+  //Drawer cash matches the change
   if (totalcid === changeDue) {
-    object.status = "CLOSED";
+    result.status = "CLOSED";
     for (let i = 0; i < cid.length; i++) {
-      object.change.push(cid[i]);
+      result.change.push(cid[i]);
+      result.change[i][1] /= 100;
     }
-    return object;
+    return result;
   }
-  /*let modifiedDrawer = [];
-    for (const element of cid) {
-      modifiedDrawer.push(element);
-    }
-    modifiedDrawer.forEach(element => {
-      for(let i=1; i<element.length; i++) {
-        element[i] = Math.round(element[i] * 100);
-      }
-    });*/
-  console.log(changeDue);
-  const denomination = [0.01, 0.05, 0.1, 0.25, 1, 5, 10, 20, 100];
+
   if (totalcid > changeDue) {
     for (let i = cid.length - 1; i >= 0; i--) {
+      let billQuantity = cid[i][1] / denomination[i]; //Get number of bills in drawer
       if (changeDue >= cid[i][1] && cid[i][1] !== 0) {
-        object.change.push(cid[i]);
+        result.change.push(cid[i]);
         changeDue -= cid[i][1];
-      } else if (changeDue < cid[i][1]) {
-        let difference = cid[i][1] - changeDue;
-        console.log(cid[i], difference);
+      } else if (changeDue < cid[i][1] && billQuantity > 1) {
+        let billsNeeded = Math.floor(changeDue / denomination[i]);
+        let totalOfDenomination = billsNeeded * denomination[i];
+        if (billsNeeded > 0) {
+          result.change.push([cid[i][0], billsNeeded * denomination[i]]);
+          changeDue -= totalOfDenomination;
+        }
       }
     }
-    console.log(changeDue);
+
+    if (changeDue !== 0) {
+      result.status = "INSUFFICIENT_FUNDS";
+      result.change = [];
+    } else {
+      result.status = "OPEN";
+      result.change.forEach((element) => {
+        for (let i = 1; i < element.length; i++) {
+          element[i] = element[i] / 100; //Convert back to monetary format
+        }
+      });
+    }
   }
-  return object;
+  return result;
 }
 
 console.log(
